@@ -10,7 +10,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background: #0d121f; /* Cambridge uslubidagi qorong'u fon */
+            background: #1a2538; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,22 +19,20 @@
             overflow-x: hidden;
         }
 
-        /* ASOSIY KONTEYNER (Harakatlanuvchi oynalar) */
         .app-container {
             width: 100%;
-            max-width: 450px;
+            max-width: 440px;
             position: relative;
         }
 
-        /* OYNA 1: RO'YXATDAN O'TISH (Chapdan kirib keladi) */
+        /* OYNA 1: RO'YXATDAN O'TISH */
         #slide-form {
             background: #ffffff;
-            border-radius: 32px 32px 32px 32px;
-            padding: 35px 25px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            border-radius: 32px;
+            padding: 35px 28px;
+            box-shadow: 0 20px 50px -8px rgba(0,0,0,0.4);
             position: relative;
             z-index: 2;
-            /* Chapdan kirish animatsiyasi */
             animation: slideInFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             transform: translateX(-120%);
             opacity: 0;
@@ -44,9 +42,9 @@
             100% { transform: translateX(0); opacity: 1; }
         }
 
-        /* OYNA 2: RAHMAT SAHIFASI (O'ngdan kirib keladi) */
+        /* OYNA 2: RAHMAT SAHIFASI */
         #slide-success {
-            background: #0d121f;
+            background: #1a2538;
             border-radius: 32px;
             padding: 50px 25px;
             position: absolute;
@@ -57,8 +55,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-            /* O'ngdan kirish animatsiyasi */
+            box-shadow: 0 20px 50px -8px rgba(0,0,0,0.4);
         }
         #slide-success.active {
             display: flex;
@@ -71,18 +68,12 @@
             100% { transform: translateX(0); opacity: 1; }
         }
 
-        /* ----- LOGOTIP ----- */
+        /* ----- HEADER & LOGOTIP ----- */
         .brand-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            margin-bottom: 22px;
         }
         .brand-logo img {
             height: 45px;
@@ -90,23 +81,26 @@
             object-fit: contain;
         }
         
-        /* TIL TANLASH (Dropdown) */
+        /* 3D BAYROQLI TIL TANLASH */
         .lang-selector {
             background: #eef2f6;
             border-radius: 30px;
-            padding: 6px 14px 6px 10px;
+            padding: 4px 12px 4px 8px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
             color: #1b2a4a;
-            border: 1px solid transparent;
-            transition: 0.3s;
+            border: 1.5px solid transparent;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.05);
+            transition: 0.2s;
         }
         .lang-selector:hover {
             border-color: #B8860B;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
         }
         .lang-selector select {
             background: transparent;
@@ -116,29 +110,35 @@
             font-size: 14px;
             color: #1b2a4a;
             cursor: pointer;
+            padding: 4px 2px 4px 6px;
+        }
+        .lang-flag {
+            font-size: 20px;
+            line-height: 1;
+            margin-right: 2px;
         }
 
-        /* ----- Sarlavha ----- */
+        /* ----- SARLAVHA ----- */
         .main-title {
             font-size: 26px;
             font-weight: 800;
-            color: #1b2a4a; /* To'q ko'k */
+            color: #1b2a4a;
             text-align: center;
-            line-height: 1.2;
-            margin-bottom: 30px;
+            line-height: 1.3;
+            margin-bottom: 28px;
         }
 
-        /* ----- FORMA (Minimalist dizayn) ----- */
+        /* ----- FORMA ----- */
         .form-group {
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             position: relative;
         }
         .form-group label {
             display: block;
-            font-size: 15px;
-            font-weight: 500;
-            color: #64748b;
-            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5a6a;
+            margin-bottom: 5px;
             margin-left: 4px;
         }
         .form-group input, 
@@ -146,27 +146,27 @@
             width: 100%;
             padding: 14px 16px;
             border: 1.5px solid #e2e8f0;
-            border-radius: 16px;
+            border-radius: 14px;
             font-size: 16px;
             background: #f8fafc;
             transition: 0.3s ease;
             font-family: 'Inter', sans-serif;
-            color: #0f172a;
+            color: #1b2a4a;
             outline: none;
         }
         .form-group input:focus, 
         .form-group select:focus {
-            border-color: #B8860B; /* Oltin rang */
+            border-color: #B8860B;
             background: #ffffff;
             box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.15);
         }
         
-        /* Telefon uchun ixtisoslashtirilgan quti */
+        /* Telefon qutisi */
         .phone-wrapper {
             display: flex;
             align-items: center;
             border: 1.5px solid #e2e8f0;
-            border-radius: 16px;
+            border-radius: 14px;
             background: #f8fafc;
             transition: 0.3s;
         }
@@ -191,7 +191,7 @@
             border-radius: 0 !important;
         }
 
-        /* ----- 3D YALTIRAGAN TUGMA ----- */
+        /* CHASHMA OLTIN TUGMA (3D + Yaltirash) */
         .btn-primary {
             width: 100%;
             padding: 18px;
@@ -203,16 +203,14 @@
             letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.2s ease;
-            /* 3D ko'rinish va yaltirash */
-            background: linear-gradient(145deg, #B8860B, #8B6508); /* Oltindan jigarrangga */
+            background: linear-gradient(145deg, #B8860B, #8B6508);
             box-shadow: 
                 0 8px 25px rgba(184, 134, 11, 0.4),
-                inset 0 1px 0 rgba(255,255,255,0.4);
+                inset 0 2px 0 rgba(255,255,255,0.3);
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
             position: relative;
             overflow: hidden;
         }
-        /* Yaltiroq effekt (shimmer) */
         .btn-primary::after {
             content: '';
             position: absolute;
@@ -222,7 +220,7 @@
             height: 200%;
             background: linear-gradient(45deg, 
                 transparent 40%, 
-                rgba(255,255,255,0.2) 50%, 
+                rgba(255,255,255,0.25) 50%, 
                 transparent 60%
             );
             animation: shimmer 3s infinite linear;
@@ -245,7 +243,7 @@
             cursor: not-allowed;
         }
 
-        /* XATOLIK XABARI */
+        /* Xato xabari */
         #error-message {
             display: none;
             margin-top: 15px;
@@ -259,76 +257,89 @@
             text-align: center;
         }
 
-        /* ----- RAHMAT OYNASI (Success) ----- */
+        /* ----- RAHMAT SAHIFASI ----- */
         .success-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: linear-gradient(135deg, #B8860B, #8B6508);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
+            font-size: 40px;
             color: white;
             box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
             margin-bottom: 25px;
         }
         .success-title {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             color: #ffffff;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             line-height: 1.2;
         }
         .success-desc {
             font-size: 15px;
             color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 10px;
+            line-height: 1.5;
+            margin-bottom: 5px;
         }
         .success-contact {
-            color: #ffffff;
+            color: #B8860B;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 19px;
             text-decoration: none;
-            margin: 5px 0 15px 0;
+            margin: 8px 0 15px 0;
             display: inline-block;
+            letter-spacing: 0.5px;
         }
         .success-contact:hover {
-            color: #B8860B;
+            text-decoration: underline;
         }
 
-        /* ----- YANGI TELEGRAM TUGMASI (Rahmat oynasida) ----- */
-        .btn-telegram {
+        /* IKKALA IJTIMOIY TUGMA (Telegram & Instagram) */
+        .social-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             width: 100%;
-            max-width: 320px;
-            padding: 16px;
+            max-width: 300px;
+            margin-top: 20px;
+        }
+        .btn-social {
+            width: 100%;
+            padding: 15px;
             border: none;
             border-radius: 50px;
             font-size: 16px;
             font-weight: 700;
             color: white;
-            background: linear-gradient(145deg, #00a3e0, #0076a3);
-            box-shadow: 0 8px 25px rgba(0, 163, 224, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
             cursor: pointer;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-top: 25px;
+            gap: 12px;
             transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
         }
-        .btn-telegram:hover {
+        .btn-social:hover {
             transform: scale(1.03);
-            box-shadow: 0 12px 35px rgba(0, 163, 224, 0.5);
+            filter: brightness(1.1);
         }
-        .btn-telegram svg { width: 24px; height: 24px; fill: white; }
+        .btn-social svg { width: 22px; height: 22px; fill: currentColor; }
+        
+        .btn-telegram { background: linear-gradient(145deg, #0088cc, #006699); }
+        .btn-instagram { 
+            background: linear-gradient(145deg, #d62976, #962fbf);
+            box-shadow: 0 8px 20px rgba(214, 41, 118, 0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
 
         @media (max-width: 480px) {
             .main-title { font-size: 22px; }
             .brand-logo img { height: 35px; }
             #slide-form { padding: 25px 20px; }
+            .social-group { gap: 10px; }
         }
     </style>
 </head>
@@ -336,17 +347,19 @@
 
 <div class="app-container">
 
-    <!-- 1-OYNA: RO'YXATDAN O'TISH (Chapdan kiradi) -->
+    <!-- 1-OYNA: RO'YXATDAN O'TISH -->
     <div id="slide-form">
         <div class="brand-header">
             <div class="brand-logo">
                 <img src="chashma_logo.png" alt="CHASHMA">
             </div>
+            
             <div class="lang-selector">
+                <span class="lang-flag" id="flagEmoji">🇺🇿</span>
                 <select id="langSelect" onchange="changeLanguage()">
-                    <option value="uz">🇺🇿 O'zb</option>
-                    <option value="ru">🇷🇺 Рус</option>
-                    <option value="en">🇬🇧 Eng</option>
+                    <option value="uz">Uzb</option>
+                    <option value="ru">Рус</option>
+                    <option value="en">Eng</option>
                 </select>
             </div>
         </div>
@@ -389,7 +402,7 @@
     </div>
 
 
-    <!-- 2-OYNA: RAHMAT SAHIFASI (O'ngdan kiradi) -->
+    <!-- 2-OYNA: RAHMAT SAHIFASI -->
     <div id="slide-success">
         <div class="success-icon">❤️</div>
         <h2 class="success-title" id="thanksTitle">Bizga bo'lgan ishonchingiz uchun rahmat</h2>
@@ -398,16 +411,23 @@
         <a href="tel:+998700790089" class="success-contact">+998 70 079 00 89</a>
         <p class="success-desc" id="thanksDesc2">raqami orqali bog'lanishadi.</p>
 
-        <a href="https://t.me/CHASHMA_LEARNING" target="_blank" class="btn-telegram">
-            <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-            <span id="telegramText">Bizni Telegramda ham kuzatib boring</span>
-        </a>
+        <!-- Yangilangan havolalar bilan -->
+        <div class="social-group">
+            <a href="https://t.me/chashma_learning_centre" target="_blank" class="btn-social btn-telegram">
+                <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                <span id="telegramText">Telegramda kuzatib boring</span>
+            </a>
+            <a href="https://www.instagram.com/chashma_learning_centre?igsh=YmtrdW1kZG1odXg2" target="_blank" class="btn-social btn-instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                <span id="instagramText">Instagramda kuzatib boring</span>
+            </a>
+        </div>
     </div>
 
 </div>
 
 <script>
-    // Telefon raqamni tozalash
+    // Telefon
     document.getElementById('phone').addEventListener('input', function() {
         this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9);
     });
@@ -415,6 +435,7 @@
     // TILLAR MA'LUMOTI
     const translations = {
         uz: {
+            flag: '🇺🇿',
             title: "Darslarga yozilish uchun hoziroq ro'yxatdan o'ting",
             labelName: "Ism",
             labelPhone: "Telefon raqam",
@@ -428,9 +449,11 @@
             thanksTitle: "Bizga bo'lgan ishonchingiz uchun rahmat",
             thanksDesc1: "Operatorlarimiz tez orada siz bilan",
             thanksDesc2: "raqami orqali bog'lanishadi.",
-            telegramText: "Bizni Telegramda ham kuzatib boring"
+            telegramText: "Telegramda kuzatib boring",
+            instagramText: "Instagramda kuzatib boring"
         },
         ru: {
+            flag: '🇷🇺',
             title: "Запишитесь на уроки прямо сейчас",
             labelName: "Имя",
             labelPhone: "Номер телефона",
@@ -444,9 +467,11 @@
             thanksTitle: "Спасибо за ваше доверие",
             thanksDesc1: "Наши операторы свяжутся с вами в ближайшее время по номеру",
             thanksDesc2: "",
-            telegramText: "Следите за нами в Telegram"
+            telegramText: "Следите за нами в Telegram",
+            instagramText: "Следите за нами в Instagram"
         },
         en: {
+            flag: '🇬🇧',
             title: "Sign up for lessons right now",
             labelName: "Full Name",
             labelPhone: "Phone Number",
@@ -460,7 +485,8 @@
             thanksTitle: "Thank you for your trust",
             thanksDesc1: "Our operators will contact you shortly at",
             thanksDesc2: "",
-            telegramText: "Follow us on Telegram"
+            telegramText: "Follow us on Telegram",
+            instagramText: "Follow us on Instagram"
         }
     };
 
@@ -468,6 +494,7 @@
         const lang = document.getElementById('langSelect').value;
         const t = translations[lang];
 
+        document.getElementById('flagEmoji').innerText = t.flag;
         document.getElementById('titleText').innerText = t.title;
         document.getElementById('labelName').innerText = t.labelName;
         document.getElementById('labelPhone').innerText = t.labelPhone;
@@ -482,9 +509,10 @@
         document.getElementById('thanksDesc1').innerText = t.thanksDesc1;
         document.getElementById('thanksDesc2').innerText = t.thanksDesc2;
         document.getElementById('telegramText').innerText = t.telegramText;
+        document.getElementById('instagramText').innerText = t.instagramText;
     }
 
-    // Formani yuborish va raqam tekshiruvi
+    // Formani yuborish
     document.getElementById('registerForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
