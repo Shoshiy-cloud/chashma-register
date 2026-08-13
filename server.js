@@ -16,9 +16,11 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.log('MongoDB xatosi:', err));
 
 // Talabalar sxemasi
+// Talabalar sxemasi (Yosh qo'shildi)
 const StudentSchema = new mongoose.Schema({
     name: String,
     phone: String,
+    age: String,   // Yangi qo'shildi
     course: String,
     registeredAt: { type: Date, default: Date.now }
 });
@@ -27,8 +29,8 @@ const Student = mongoose.model('Student', StudentSchema);
 // Ro'yxatdan o'tish API
 app.post('/api/register', async (req, res) => {
     try {
-        const { name, phone, course } = req.body;
-        const newStudent = new Student({ name, phone, course });
+        const { name, phone, age, course } = req.body;
+        const newStudent = new Student({ name, phone, age, course });
         await newStudent.save();
         res.json({ success: true, message: "Tabriklaymiz! Muvaffaqiyatli ro'yxatdan o'tdingiz!" });
     } catch (error) {
