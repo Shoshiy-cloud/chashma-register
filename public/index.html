@@ -4,60 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHASHMA - Ro'yxatdan o'tish</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, #f0f2f5 0%, #dce1e8 100%);
             display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px;
         }
+
+        /* Asosiy quti */
         .container { 
-            background: white; padding: 40px 35px; border-radius: 15px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 420px; 
-            text-align: center; transition: transform 0.3s ease; position: relative;
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
+            padding: 40px 30px; border-radius: 24px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12); 
+            width: 100%; max-width: 440px; 
+            text-align: center; position: relative;
+            transition: all 0.3s ease;
         }
-        .container:hover { transform: translateY(-5px); }
+        .container:hover { transform: translateY(-3px); }
         
-        /* Chap yuqori burchakdagi logotip (RASM) */
+        /* Chap yuqori logotip */
         .top-logo {
             position: absolute;
-            top: 15px;
-            left: 20px;
+            top: 20px;
+            left: 24px;
             text-align: left;
         }
         .top-logo img {
-            max-width: 120px;  /* Logotip o'lchami - kerak bo'lsa o'zgartirishingiz mumkin */
+            max-width: 110px;
             height: auto;
             display: block;
         }
         
-        h3 { color: #333; margin-top: 30px; margin-bottom: 20px; font-weight: 600; font-size: 22px; }
-        
-        /* Inputlar dizayni */
-        .input-group { margin-bottom: 15px; text-align: left; }
-        .input-group label { display: block; font-size: 14px; font-weight: 600; color: #555; margin-bottom: 5px; }
-        input, select { 
-            width: 100%; padding: 12px 15px; border: 2px solid #e1e4e8; border-radius: 8px; 
-            font-size: 15px; transition: 0.3s; background: #f9f9f9; outline: none;
+        /* Sarlavha - Logotip bilan to'qnashmasligi uchun margin qo'shdik */
+        h3 { 
+            color: #1a2a3a; 
+            margin-top: 55px; 
+            margin-bottom: 25px; 
+            font-weight: 700; 
+            font-size: 24px; 
+            letter-spacing: -0.5px;
         }
-        input:focus, select:focus { border-color: #B8860B; background: white; box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.15); }
+
+        /* Inputlar dizayni - Professional */
+        .input-group { margin-bottom: 18px; text-align: left; }
+        .input-group label { display: block; font-size: 14px; font-weight: 600; color: #34495e; margin-bottom: 6px; }
+        
+        /* Telefon uchun o'ralgan quti */
+        .phone-wrapper {
+            display: flex;
+            border: 2px solid #e1e4e8;
+            border-radius: 12px;
+            background: #f8f9fa;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .phone-wrapper:focus-within {
+            border-color: #B8860B;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.15);
+        }
+        .phone-prefix {
+            background: #e9ecef;
+            padding: 12px 15px;
+            font-weight: 700;
+            color: #2c3e50;
+            border-right: 2px solid #e1e4e8;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+        .phone-wrapper input {
+            border: none !important;
+            border-radius: 0 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 12px 15px !important;
+        }
+        
+        input, select { 
+            width: 100%; padding: 12px 15px; border: 2px solid #e1e4e8; border-radius: 12px; 
+            font-size: 15px; transition: 0.3s; background: #f8f9fa; outline: none; font-family: 'Inter', sans-serif;
+        }
+        input:focus, select:focus { border-color: #B8860B; background: white; box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.15); }
         
         button { 
-            width: 100%; padding: 14px; background: linear-gradient(145deg, #B8860B, #8B6508); 
-            color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: 700; 
-            cursor: pointer; margin-top: 10px; transition: 0.3s; letter-spacing: 1px;
+            width: 100%; padding: 16px; background: linear-gradient(145deg, #B8860B, #8B6508); 
+            color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: 700; 
+            cursor: pointer; margin-top: 15px; transition: 0.3s; letter-spacing: 1px;
         }
-        button:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4); }
-        button:active { transform: scale(0.98); }
+        button:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(184, 134, 11, 0.4); }
+        button:active { transform: scale(0.97); }
         
-        #message { margin-top: 15px; font-weight: 600; padding: 10px; border-radius: 6px; display: none; }
-        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; display: block !important; }
-        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; display: block !important; }
+        /* Xabarlar */
+        #message-box {
+            display: none;
+            margin-top: 20px;
+        }
+        .msg-content {
+            padding: 20px 15px;
+            border-radius: 16px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        .success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; display: block !important; }
+        .error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; display: block !important; }
+        .warning { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; display: block !important; }
+
+        .big-thanks { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: #B8860B; }
+        .contact-link { display: inline-block; font-weight: 700; color: #1a2a3a; text-decoration: none; margin: 10px 0; font-size: 18px; }
+        .contact-link:hover { color: #B8860B; }
+        
+        .social-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            transition: 0.3s;
+            flex: 1;
+        }
+        .social-btn.telegram { background: #0088cc; }
+        .social-btn.telegram:hover { background: #006699; transform: scale(1.05); }
+        .social-btn.instagram { background: #E1306C; }
+        .social-btn.instagram:hover { background: #b81d54; transform: scale(1.05); }
+
+        /* Mobil uchun (responsive) */
+        @media (max-width: 480px) {
+            .container { padding: 25px 20px; max-width: 100%; margin: 0 10px; }
+            .top-logo img { max-width: 80px; }
+            h3 { margin-top: 45px; font-size: 20px; }
+            .social-buttons { flex-direction: column; gap: 10px; }
+            .contact-link { font-size: 16px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Chap yuqori burchakdagi logotip (RASM) -->
+        <!-- Chap yuqori logotip -->
         <div class="top-logo">
             <img src="chashma_logo.png" alt="CHASHMA Learning Centre">
         </div>
@@ -68,19 +161,22 @@
             <!-- Ism -->
             <div class="input-group">
                 <label for="name">Ism va Familiya</label>
-                <input type="text" id="name" required>
+                <input type="text" id="name" placeholder="Masalan: Saidalo Tadjibayev" required>
             </div>
             
-            <!-- Telefon -->
+            <!-- Telefon (Avtomatik +998 va kompaniya tekshiruvi bilan) -->
             <div class="input-group">
                 <label for="phone">Telefon raqam</label>
-                <input type="tel" id="phone" required>
+                <div class="phone-wrapper">
+                    <div class="phone-prefix">+998</div>
+                    <input type="text" id="phone" placeholder="90 123 45 67" required maxlength="9">
+                </div>
             </div>
             
             <!-- Yosh -->
             <div class="input-group">
                 <label for="age">Yosh</label>
-                <input type="number" id="age" min="1" max="120" required>
+                <input type="number" id="age" placeholder="18" min="1" max="120" required>
             </div>
             
             <!-- Kurs -->
@@ -94,21 +190,57 @@
                 </select>
             </div>
             
-            <button type="submit">Ro'yxatdan o'tish</button>
+            <button type="submit" id="submitBtn">Ro'yxatdan o'tish</button>
         </form>
-        <div id="message"></div>
+
+        <!-- Xabar (Success & Error) alohida oyna -->
+        <div id="message-box" class="msg-content">
+            <!-- Bu yerga JavaScript orqali yoziladi -->
+        </div>
     </div>
 
     <script>
+        // Telefon raqamga faqat raqamlar kiritish va 9 ta raqam
+        document.getElementById('phone').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9);
+        });
+
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const msgDiv = document.getElementById('message');
-            msgDiv.className = '';
-            msgDiv.style.display = 'none';
+            
+            const msgBox = document.getElementById('message-box');
+            const submitBtn = document.getElementById('submitBtn');
+            msgBox.style.display = 'none';
+            msgBox.className = 'msg-content';
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Yuborilmoqda...";
 
+            // Telefon raqam kompaniyasini tekshirish
+            const phoneRaw = document.getElementById('phone').value;
+            const phoneCode = phoneRaw.substring(0, 2);
+            const validCodes = ['90','91','93','94','95','97','98','99','33','20'];
+            const companies = {
+                '90':'Beeline','91':'Beeline','93':'Ucell','94':'Ucell',
+                '95':'Uzmobile','97':'Mobiuz','98':'Perfectum','99':'Uzmobile',
+                '33':'Humans','20':'OQ'
+            };
+
+            if (!validCodes.includes(phoneCode) || phoneRaw.length !== 9) {
+                msgBox.className = 'msg-content warning';
+                msgBox.style.display = 'block';
+                msgBox.innerHTML = `⚠️ <strong>Bunday telefon raqam mavjud emas!</strong><br> 
+                <span style="font-size:13px;">+998 ${phoneRaw} — bu kompaniyaga tegishli emas.<br>
+                Mavjud kompaniyalar: Beeline (90,91), Ucell (93,94), Uzmobile (95,99), Mobiuz (97), Perfectum (98), Humans (33), OQ (20).</span>`;
+                
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Ro'yxatdan o'tish";
+                return;
+            }
+
+            // Data tayyorlash
             const data = {
                 name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
+                phone: '+998' + phoneRaw,
                 age: document.getElementById('age').value,
                 course: document.getElementById('course').value
             };
@@ -122,20 +254,34 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    msgDiv.className = 'success';
-                    msgDiv.innerText = result.message;
-                    msgDiv.style.display = 'block';
+                    // SUCCESS - Alohida chiroyli oyna
+                    msgBox.className = 'msg-content success';
+                    msgBox.style.display = 'block';
+                    msgBox.innerHTML = `
+                        <div class="big-thanks">✅ RO'YXATDAN O'TGANINGIZ UCHUN RAHMAT</div>
+                        <div style="font-size:15px; margin-bottom:5px;">Tez orada</div>
+                        <a href="tel:+998700790089" class="contact-link">📞 +998 70 079 00 89</a>
+                        <div style="font-size:14px; color:#374151; margin-top:5px;">raqami orqali sizga aloqaga chiqishadi.</div>
+                        <div style="margin-top:20px; font-weight:600; color:#1a2a3a; font-size:14px;">Bizni kuzatib boring:</div>
+                        <div class="social-buttons">
+                            <a href="https://t.me/CHASHMA_LEARNING" target="_blank" class="social-btn telegram">📨 Telegramda</a>
+                            <a href="https://www.instagram.com/chashma_learning" target="_blank" class="social-btn instagram">📸 Instagramda</a>
+                        </div>
+                    `;
                     document.getElementById('registerForm').reset();
                 } else {
-                    msgDiv.className = 'error';
-                    msgDiv.innerText = result.message;
-                    msgDiv.style.display = 'block';
+                    msgBox.className = 'msg-content error';
+                    msgBox.style.display = 'block';
+                    msgBox.innerHTML = `❌ ${result.message}`;
                 }
             } catch (error) {
-                msgDiv.className = 'error';
-                msgDiv.innerText = "Ulanishda xatolik!";
-                msgDiv.style.display = 'block';
+                msgBox.className = 'msg-content error';
+                msgBox.style.display = 'block';
+                msgBox.innerHTML = "❌ Ulanishda xatolik! Internetni tekshiring.";
             }
+
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Ro'yxatdan o'tish";
         });
     </script>
 </body>
